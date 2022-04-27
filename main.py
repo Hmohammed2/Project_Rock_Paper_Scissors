@@ -61,7 +61,7 @@ def play():
 model = load_model('keras_model.h5')
 cap = cv2.VideoCapture(0)
 data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
-game = Game()
+# game = Game()
 
 while True:
     ret, frame = cap.read()
@@ -73,8 +73,12 @@ while True:
     prediction = model.predict(data)
     cv2.imshow('frame', frame)
 
+    max_value = np.where(prediction == np.amax(prediction))
+
     # Press q to close the window
-    print(prediction[0][0])
+    # print(prediction)
+    print(f"Max value is {max_value}")
+
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
