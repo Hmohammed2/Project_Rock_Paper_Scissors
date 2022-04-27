@@ -1,7 +1,7 @@
 from cv2 import cv2
 from keras.models import load_model
 import numpy as np
-
+import random as rd
 
 class Game:
     def __init__(self):
@@ -49,8 +49,8 @@ class Game:
 model = load_model('keras_model.h5')
 cap = cv2.VideoCapture(0)
 data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
-game = Game()
-counter = 10
+game = Game() # Initialise game class
+counter = 50
 
 while True:
     ret, frame = cap.read()
@@ -62,27 +62,30 @@ while True:
     prediction = model.predict(data)
     cv2.imshow('frame', frame)
     max_value = np.where(prediction == np.amax(prediction))
+    # pulls out the max probability value and locates the index which it is located in. THe index represents the label
+    # 0 label is rock, 1 label is scissors, 2 label is paper, 3 label is nothing
 
 
-    def prediction_output(max_val):
+    def prediction_output(max_val): # function gets the max value
         if max_val[1] == 0:
-            user_choice = "rock"
+            users_choice = "rock"
         elif max_val[1] == 1:
-            user_choice = "scissors"
+            users_choice = "scissors"
         elif max_val[1] == 2:
-            user_choice = "paper"
+            users_choice = "paper"
         else:
-            user_choice = "nothing"
-        return user_choice
+            users_choice = "nothing"
+        return users_choice
 
 
-    # counter variable which counts to 0 and initiates the users hand gesture
+    # counter variable which counts to 0 and initiates the users most probable hand gesture
     counter = counter - 1
-    print(counter)
 
     if counter == 0:
-        print(prediction_output(max_value))
-        counter = 10
+        user_choice = prediction_output(max_value)
+        print(user_choice)
+        game.get_winner(user_choice)
+        counter = 50
 
     # Press q to close the window
     # print(prediction)
