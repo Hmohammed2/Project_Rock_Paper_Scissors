@@ -19,6 +19,7 @@ class Game:
             print(f"You picked {self.user_choice}")
         else:
             print("You can only pick between Rock, Paper, Scissors")
+            raise KeyError
         return self.user_choice
 
     def get_winner(self):
@@ -26,6 +27,7 @@ class Game:
         user_choice = self.user_choice
 
         print(f"Computer picks {computer_choice}")
+
         if user_choice == computer_choice:
             print(f"You picked {user_choice} and computer picked {computer_choice}. Its a tie!")
         elif user_choice == "rock":
@@ -46,9 +48,8 @@ class Game:
 
 
 def play():
-    init = Game()
     while True:
-
+        init = Game()
         init.get_winner()
 
         play_again = input("Play again (y/n)")
