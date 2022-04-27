@@ -4,7 +4,7 @@ import random as rd
 class Game:
 
     def __init__(self):
-        # instantiate list for possible choices in game
+        # Constructor
         self.possible_actions = ["rock", "paper", "scissors"]
         self.user_choice = input("Enter a choice (rock, paper, scissors): ")
 
