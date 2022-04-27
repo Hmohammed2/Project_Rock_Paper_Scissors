@@ -1,10 +1,11 @@
 # Computer Vision Rock Paper Scissors
-This is an implementation of an interactive Rock-Paper-Scissors game, in which the user can play with the computer using the camera. Technologies used include: "Teachable Machine"
+This is an implementation of an interactive Rock-Paper-Scissors game, in which the user can play with the computer using the camera.
 
 ## Table of contents
-* [General info](#general-info)
 * [Technologies](#technologies)
 * [Milestone 1](#Milestone1)
+* [Milestone 2](#Milestone1)
+* [Milestone 3](#Milestone1)
 
 ## Technologies
 * Pycharm 
