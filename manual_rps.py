@@ -1,6 +1,14 @@
 import random as rd
 
 
+class Action:
+    def __init__(self):
+        self.rock = 0
+        self.paper = 1
+        self.scissors = 2
+        self.nothing = 3
+
+
 class Game:
 
     def __init__(self):
@@ -57,5 +65,11 @@ def play():
             break
 
 
+def test():
+    app = Action()
+    print(dir(app))
+    print(app.__dict__)
+
+
 if __name__ == '__main__':
-    play()
+    test()
