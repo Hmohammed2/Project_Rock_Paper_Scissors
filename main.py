@@ -7,17 +7,16 @@ class Game:
     def __init__(self):
         # Constructor
         self.possible_actions = ["rock", "paper", "scissors"]
-        self.user_choice = input("Enter a choice (rock, paper, scissors): ")
 
     def get_computer_choice(self):
         # method simulates a computer choosing between rock, paper and scissors
         computer_action = rd.choice(self.possible_actions)
         return computer_action
 
-    def get_user_choice(self):
+    def get_user_choice(self, user_choice):
         # Method gets user choice
-        if self.user_choice in self.possible_actions:
-            print(f"You picked {self.user_choice}")
+        if user_choice in self.possible_actions:
+            print(f"You picked {user_choice}")
         else:
             print("You can only pick between Rock, Paper, Scissors")
             raise KeyError
@@ -61,7 +60,7 @@ def play():
 model = load_model('keras_model.h5')
 cap = cv2.VideoCapture(0)
 data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
-# game = Game()
+game = Game()
 
 while True:
     ret, frame = cap.read()
@@ -72,12 +71,28 @@ while True:
     data[0] = normalized_image
     prediction = model.predict(data)
     cv2.imshow('frame', frame)
-
     max_value = np.where(prediction == np.amax(prediction))
+
+
+    def prediction_output(max_value):
+        if max_value[1] == 0:
+            user_choice = "rock"
+            print("rock")
+        elif max_value[1] == 1:
+            user_choice = "scissors"
+            print(user_choice)
+        elif max_value[1] == 2:
+            user_choice = "paper"
+            print(user_choice)
+        else:
+            user_choice = "nothing"
+            print("nothing")
+        return user_choice
+
+    print(prediction_output(max_value))
 
     # Press q to close the window
     # print(prediction)
-    print(f"Max value is {max_value}")
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
