@@ -20,11 +20,10 @@ class Game:
         else:
             print("You can only pick between Rock, Paper, Scissors")
             raise KeyError
-        return self.user_choice
+        return user_choice
 
-    def get_winner(self):
+    def get_winner(self, user_choice):
         computer_choice = self.get_computer_choice()
-        user_choice = self.user_choice
 
         print(f"Computer picks {computer_choice}")
 
@@ -47,20 +46,11 @@ class Game:
                 print("Well done you win! Scissors cuts paper!")
 
 
-def play():
-    while True:
-        init = Game()
-        init.get_winner()
-
-        play_again = input("Play again (y/n)")
-        if play_again.lower() != "y":
-            break
-
-
 model = load_model('keras_model.h5')
 cap = cv2.VideoCapture(0)
 data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
 game = Game()
+counter = 10
 
 while True:
     ret, frame = cap.read()
@@ -74,22 +64,25 @@ while True:
     max_value = np.where(prediction == np.amax(prediction))
 
 
-    def prediction_output(max_value):
-        if max_value[1] == 0:
+    def prediction_output(max_val):
+        if max_val[1] == 0:
             user_choice = "rock"
-            print("rock")
-        elif max_value[1] == 1:
+        elif max_val[1] == 1:
             user_choice = "scissors"
-            print(user_choice)
-        elif max_value[1] == 2:
+        elif max_val[1] == 2:
             user_choice = "paper"
-            print(user_choice)
         else:
             user_choice = "nothing"
-            print("nothing")
         return user_choice
 
-    print(prediction_output(max_value))
+
+    # counter variable which counts to 0 and initiates the users hand gesture
+    counter = counter - 1
+    print(counter)
+
+    if counter == 0:
+        print(prediction_output(max_value))
+        counter = 10
 
     # Press q to close the window
     # print(prediction)
