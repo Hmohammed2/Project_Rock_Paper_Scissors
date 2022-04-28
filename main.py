@@ -102,7 +102,7 @@ while True:
         print(f"Computer: {computer_score}")
         counter = 70
 
-    if player_score or computer_score == 3:
+    if player_score == 3 or computer_score == 3:
         play_again = input("Play again? (y/n)")
         if play_again.lower() != "y":
             break
@@ -114,10 +114,6 @@ while True:
     # print(prediction)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
-
-    #    play_again = input("Play again (y/n)")
-    #    if play_again.lower() != "y":
-    #        break
 
 # After the loop release the cap object
 cap.release()
