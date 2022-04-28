@@ -104,10 +104,13 @@ while True:
         print(f"Computer: {computer_score}")
         counter = 70
 
-    if player_score or computer_score = 3:
+    if player_score or computer_score > 3:
         play_again = input("Play again (y/n)")
         if play_again.lower() != "y":
             break
+        else:
+            player_score = 0
+            computer_score = 0
 
     # Press q to close the window
     # print(prediction)
