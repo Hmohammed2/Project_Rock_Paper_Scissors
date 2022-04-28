@@ -66,7 +66,8 @@ while True:
     # 0 label is rock, 1 label is scissors, 2 label is paper, 3 label is nothing
 
 
-    def prediction_output(max_val): # function gets the max value
+    def prediction_output(max_val): # function gets the max value from the multidimensional array and returns the
+        # gesture
         if max_val[1] == 0:
             users_choice = "rock"
         elif max_val[1] == 1:
