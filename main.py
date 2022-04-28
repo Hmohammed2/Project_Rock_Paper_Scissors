@@ -35,8 +35,6 @@ class Game:
 
         if user_choice == computer_choice:
             print(f"You picked {user_choice} and computer picked {computer_choice}. Its a tie!")
-            player_score += 1
-            computer_score += 1
         elif user_choice == "rock":
             if computer_choice == "paper":
                 print("Too bad you lose! Paper beats rock!")
@@ -104,8 +102,8 @@ while True:
         print(f"Computer: {computer_score}")
         counter = 70
 
-    if player_score or computer_score > 3:
-        play_again = input("Play again (y/n)")
+    if player_score or computer_score == 3:
+        play_again = input("Play again? (y/n)")
         if play_again.lower() != "y":
             break
         else:
