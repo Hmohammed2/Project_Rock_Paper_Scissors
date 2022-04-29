@@ -23,7 +23,6 @@ class Game:
             print(f"You picked {user_choice}")
         else:
             print("You can only pick between Rock, Paper, Scissors")
-            raise KeyError
         return user_choice
 
     def get_winner(self, user_choice):
@@ -61,7 +60,7 @@ class Game:
 model = load_model('keras_model.h5')
 cap = cv2.VideoCapture(0)
 data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
-game = Game() # Initialise game class
+game = Game()  # Initialise game class
 counter = 70
 
 while True:
@@ -70,15 +69,21 @@ while True:
 
     image_np = np.array(resized_frame)
     normalized_image = (image_np.astype(np.float32) / 127.0) - 1  # Normalize the image
+    font = cv2.FONT_HERSHEY_SIMPLEX
+    cv2.putText(frame, str(counter),  # Puts in a countdown timer to let user know when to input hand gesture
+                (200, 250), font,
+                7, (0, 255, 255),
+                4, cv2.LINE_AA)
     data[0] = normalized_image
     prediction = model.predict(data)
     cv2.imshow('frame', frame)
     max_value = np.where(prediction == np.amax(prediction))
+
+
     # pulls out the max probability value and locates the index which it is located in. THe index represents the label
     # 0 label is rock, 1 label is scissors, 2 label is paper, 3 label is nothing
 
-
-    def prediction_output(max_val): # function gets the max value from the multidimensional array and returns the
+    def prediction_output(max_val):  # function gets the max value from the multidimensional array and returns the
         # gesture
         if max_val[1] == 0:
             users_choice = "rock"
@@ -96,14 +101,27 @@ while True:
 
     if counter == 0:
         player_choice = prediction_output(max_value)
-        print(player_choice)
+        print(f"You picked {player_choice}")
         game.get_winner(player_choice)
         print(f"Player: {player_score}")
         print(f"Computer: {computer_score}")
         counter = 70
 
     if player_score == 3 or computer_score == 3:
-        play_again = input("Play again? (y/n)")
+        if player_score == 3:
+            print("Well done you beat the computer!")
+        else:
+            print("Aww you lost! Better luck next time")
+        # draw the label into the frame
+        # show the resultant frame
+        # play_again_str = "Play again? (y/n)"
+        # cv2.putText(frame, play_again_str,
+        #             (200, 250), font,
+        #             7, (0, 255, 255),
+        #             4, cv2.LINE_AA)
+        # cv2.imshow('frame', frame)
+        # cv2.waitKey(-1)  # wait until any key is pressed
+        play_again = input("Play again? (Y/n)")
         if play_again.lower() != "y":
             break
         else:
