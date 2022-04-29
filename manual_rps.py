@@ -1,6 +1,10 @@
 import random as rd
 
 
+player_score = 0
+computer_score = 0
+
+
 class Action:
     def __init__(self):
         self.rock = 0
@@ -31,6 +35,8 @@ class Game:
         return self.user_choice
 
     def get_winner(self):
+        global player_score, computer_score
+
         computer_choice = self.get_computer_choice()
         user_choice = self.user_choice
 
@@ -41,28 +47,44 @@ class Game:
         elif user_choice == "rock":
             if computer_choice == "paper":
                 print("Too bad you lose! Paper beats rock!")
+                computer_score += 1
             else:
                 print("Well done you win! Rock smashes scissors")
+                player_score += 1
         elif user_choice == "paper":
             if computer_choice == "rock":
                 print("Well done you win! Paper beats rock!")
+                player_score += 1
             else:
                 print("Too bad you lose! Scissors cuts paper!")
+                computer_score += 1
         elif user_choice == "scissors":
             if computer_choice == "rock":
                 print("Too bad you lose! Rock smashes scissors!")
+                computer_score += 1
             else:
                 print("Well done you win! Scissors cuts paper!")
+                player_score += 1
 
 
 def play():
+    global player_score, computer_score
     while True:
-        init = Game()
-        init.get_winner()
+        game = Game()
+        game.get_winner()
+        print(f"Player: {player_score}")
+        print(f"Computer: {computer_score}")
+        if player_score == 3 or computer_score == 3:
+            if player_score == 3:
+                print("Well done you beat the computer!")
 
-        play_again = input("Play again (y/n)")
-        if play_again.lower() != "y":
-            break
+            else:
+                print("Aww you lost! Better luck next time")
+            player_score = 0
+            computer_score = 0
+            play_again = input("Play again (y/n)")
+            if play_again.lower() != "y":
+                break
 
 
 def test():
@@ -72,4 +94,4 @@ def test():
 
 
 if __name__ == '__main__':
-    test()
+    play()
