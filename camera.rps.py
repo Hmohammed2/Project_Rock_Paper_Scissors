@@ -81,13 +81,13 @@ while True:
     # 0 label is rock, 1 label is scissors, 2 label is paper, 3 label is nothing
 
 
-    def prediction_output(max_val):  # function gets the max value from the multidimensional array and returns the
-        # gesture
-        if max_val[1] == 0:
+    def prediction_output(max_probability):  # function gets the max probability value from the multidimensional array
+        # and returns the gesture
+        if max_probability[1] == 0:
             users_choice = "rock"
-        elif max_val[1] == 1:
+        elif max_probability[1] == 1:
             users_choice = "scissors"
-        elif max_val[1] == 2:
+        elif max_probability[1] == 2:
             users_choice = "paper"
         else:
             users_choice = "nothing"
@@ -110,8 +110,6 @@ while True:
             print("Well done you beat the computer!")
         else:
             print("Aww you lost! Better luck next time")
-        # draw the label into the frame
-        # show the resultant frame
         play_again = input("Play again? (Y/n)")
         if play_again.lower() != "y":
             break
