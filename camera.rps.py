@@ -1,7 +1,7 @@
-from cv2 import cv2
 from keras.models import load_model
 import numpy as np
 import random as rd
+from cv2 import cv2
 
 player_score = 0
 computer_score = 0
@@ -66,7 +66,6 @@ counter = 70
 while True:
     ret, frame = cap.read()
     resized_frame = cv2.resize(frame, (224, 224), interpolation=cv2.INTER_AREA)
-
     image_np = np.array(resized_frame)
     normalized_image = (image_np.astype(np.float32) / 127.0) - 1  # Normalize the image
     font = cv2.FONT_HERSHEY_SIMPLEX
@@ -113,13 +112,6 @@ while True:
             print("Aww you lost! Better luck next time")
         # draw the label into the frame
         # show the resultant frame
-        # play_again_str = "Play again? (y/n)"
-        # cv2.putText(frame, play_again_str,
-        #             (200, 250), font,
-        #             7, (0, 255, 255),
-        #             4, cv2.LINE_AA)
-        # cv2.imshow('frame', frame)
-        # cv2.waitKey(-1)  # wait until any key is pressed
         play_again = input("Play again? (Y/n)")
         if play_again.lower() != "y":
             break
