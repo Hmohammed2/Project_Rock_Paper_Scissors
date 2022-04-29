@@ -77,11 +77,10 @@ while True:
     data[0] = normalized_image
     prediction = model.predict(data)
     cv2.imshow('frame', frame)
-    max_value = np.where(prediction == np.amax(prediction))
-
-
+    max_value = np.where(prediction == np.amax(prediction)) > 0.7
     # pulls out the max probability value and locates the index which it is located in. THe index represents the label
     # 0 label is rock, 1 label is scissors, 2 label is paper, 3 label is nothing
+
 
     def prediction_output(max_val):  # function gets the max value from the multidimensional array and returns the
         # gesture
