@@ -3,9 +3,10 @@ This is an implementation of an interactive Rock-Paper-Scissors game, in which t
 
 ## Table of contents
 * [Technologies](#technologies)
-* [Milestone 1: Creating the Model](#Milestone-1:-Creating-the-Model)
-* [Milestone 2: Installing the dependencies](Milestone-2)
-* [Milestone 3: Creating the Rock, Paper Scissors Game](#milestone-3)
+* [Milestone 1: Creating the Model](#Milestone-1-Creating-the-Model)
+* [Milestone 2: Installing the dependencies](#Milestone-2-Installing-the-dependencies)
+* [Milestone 3: Creating the Rock, Paper Scissors Game]([#Milestone-3-Creating-the-Rock-Paper-Scissors-Game)
+* [Milestone 4: Using the Camera to play RPS]([#Milestone-4-Using-the-Camera-to-play-RPS)
 * [Conclusion](#Conclusion)
 
 ## Technologies
@@ -168,3 +169,4 @@ An extra functionality was also implemented to have a countdown timer to show th
             computer_score = 0
 ```
 ## Conclusion
+- 
