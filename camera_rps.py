@@ -1,9 +1,7 @@
-import time
-
 from keras.models import load_model
 import numpy as np
 import random as rd
-from cv2 import cv2
+from cv2 import cv2  # Pycharm seems to work better through this import method
 
 player_score = 0
 computer_score = 0
