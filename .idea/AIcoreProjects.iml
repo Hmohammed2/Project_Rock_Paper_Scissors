@@ -7,5 +7,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="Practice" />
+    <orderEntry type="module" module-name="AICore-Scraper" />
+    <orderEntry type="module" module-name="AICoreProject_DataCollection" />
   </component>
 </module>

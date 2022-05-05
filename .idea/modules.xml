@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../AICore-Scraper/.idea/AICore-Scraper.iml" filepath="$PROJECT_DIR$/../AICore-Scraper/.idea/AICore-Scraper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../AICoreProject_DataCollection/.idea/AICoreProject_DataCollection.iml" filepath="$PROJECT_DIR$/../AICoreProject_DataCollection/.idea/AICoreProject_DataCollection.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/AIcoreProjects.iml" filepath="$PROJECT_DIR$/.idea/AIcoreProjects.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Practice/.idea/Practice.iml" filepath="$PROJECT_DIR$/../Practice/.idea/Practice.iml" />
     </modules>
